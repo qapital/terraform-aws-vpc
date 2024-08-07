@@ -58,7 +58,7 @@ resource "aws_flow_log" "this" {
 ################################################################################
 
 resource "aws_cloudwatch_log_group" "flow_log" {
-  count = local.create_flow_log_cloudwatch_log_group ? 1 : 0
+  # count = local.create_flow_log_cloudwatch_log_group ? 1 : 0     ## Always create cloudwatch log group to keep old logs during migration to s3
 
   name              = "${var.flow_log_cloudwatch_log_group_name_prefix}${local.flow_log_cloudwatch_log_group_name_suffix}"
   retention_in_days = var.flow_log_cloudwatch_log_group_retention_in_days
